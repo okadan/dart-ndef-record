@@ -1,0 +1,14 @@
+name: ndef_record
+description: A Dart implementation of the NFC Data Exchange Format (NDEF) specification.
+version: 1.0.0-dev
+repository: https://github.com/okadan/dart-ndef-record
+
+environment:
+  sdk: ^3.2.3
+
+dependencies:
+  collection:
+
+dev_dependencies:
+  lints:
+  test:
