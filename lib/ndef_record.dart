@@ -1,8 +1,8 @@
-import 'dart:typed_data';
+import 'dart:typed_data' show Uint8List;
 
 import 'package:collection/collection.dart';
 
-const _iterableEquality = IterableEquality();
+const _iterableEquality = IterableEquality<Object>();
 
 /// The values that indicate the content type for the payload data.
 enum TypeNameFormat {
