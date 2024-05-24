@@ -1,1 +1,1 @@
-See the NDEF Specification for more informations and usage.
+See the package README or NDEF Specification for more informations and usage.
