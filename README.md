@@ -6,8 +6,6 @@ A Dart implementation of the NFC Data Exchange Format (NDEF) specification.
 
 Currently this package only provides the low-level API of the NDEF specification, so you will need to implement encoding/decoding of byte data yourself.
 
-### NdefRecord
-
 ```dart
 // Well-Known Record (RTD:T)
 NdefRecord(
