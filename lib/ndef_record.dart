@@ -6,25 +6,25 @@ const _iterableEquality = IterableEquality<Object>();
 
 /// The values that indicate the content type for the payload data.
 enum TypeNameFormat {
-  /// The value indicating that the payload contains no data.
+  /// The payload contains no data.
   empty,
 
-  /// The value indicating that the payload contains well-known record type data.
+  /// The payload contains well-known record type data.
   wellKnown,
 
-  /// The value indicating that the payload contains media data as defined by RFC 2046.
+  /// The payload contains media data as defined by RFC 2046.
   media,
 
-  /// The value indicating that the payload contains a uniform resource identifier.
+  /// The payload contains a uniform resource identifier.
   absoluteUri,
 
-  /// The value indicating that the payload contains NFC external type data.
+  /// The payload contains NFC external type data.
   external,
 
-  /// The value indicating that the payload data type is unknown.
+  /// The payload data type is unknown.
   unknown,
 
-  /// The value indicating that the payload is part of a series of records containing chunked data.
+  /// The payload is part of a series of records containing chunked data.
   unchanged,
 }
 
@@ -95,7 +95,8 @@ final class NdefRecord {
         }
       case TypeNameFormat.unchanged:
         throw FormatException(
-            'unexpected UNCHANGED record in first chunk or logical record.');
+          'unexpected UNCHANGED record in first chunk or logical record.',
+        );
       default:
         break;
     }
