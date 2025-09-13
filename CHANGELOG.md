@@ -1,3 +1,11 @@
+## 1.3.0
+
+* Bump versions.
+
+## 1.2.1
+
+* Update package page.
+
 ## 1.2.0
 
 * Bump versions.

@@ -1,3 +1,3 @@
 # ndef_record
 
-A Dart implementation of the NFC Data Exchange Format (NDEF) specification.
+A Dart package that provides an implementation of the NFC Data Exchange Format (NDEF).

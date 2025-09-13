@@ -49,8 +49,7 @@ final class NdefMessage {
   @override
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
-    return other is NdefMessage &&
-        _iterableEquality.equals(other.records, records);
+    return other is NdefMessage && _iterableEquality.equals(other.records, records);
   }
 }
 
@@ -94,9 +93,7 @@ final class NdefRecord {
           throw FormatException('unexpected type field in UNKNOWN record.');
         }
       case TypeNameFormat.unchanged:
-        throw FormatException(
-          'unexpected UNCHANGED record in first chunk or logical record.',
-        );
+        throw FormatException('unexpected UNCHANGED record in first chunk or logical record.');
       default:
         break;
     }
