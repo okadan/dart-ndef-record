@@ -49,11 +49,12 @@ final class NdefMessage {
   @override
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
-    return other is NdefMessage && _iterableEquality.equals(other.records, records);
+    return other is NdefMessage &&
+        _iterableEquality.equals(other.records, records);
   }
 }
 
-/// The NDEF record in an message.
+/// The NDEF record in a message.
 final class NdefRecord {
   const NdefRecord._({
     required this.typeNameFormat,
@@ -93,7 +94,9 @@ final class NdefRecord {
           throw FormatException('unexpected type field in UNKNOWN record.');
         }
       case TypeNameFormat.unchanged:
-        throw FormatException('unexpected UNCHANGED record in first chunk or logical record.');
+        throw FormatException(
+          'unexpected UNCHANGED record in first chunk or logical record.',
+        );
       default:
         break;
     }
@@ -107,16 +110,23 @@ final class NdefRecord {
 
   /// The length of this record in bytes.
   int get byteLength {
-    int length = 3 + type.length + identifier.length + payload.length;
+    int length = 3; // header + type length + payload length
+
+    if (typeNameFormat == TypeNameFormat.empty) {
+      return length;
+    }
+
+    length += type.length + payload.length;
+
+    // id length
+    if (identifier.isNotEmpty) {
+      length += 1;
+      length += identifier.length;
+    }
 
     // long record
     if (payload.length > 255) {
       length += 3;
-    }
-
-    // identifier length
-    if (typeNameFormat == TypeNameFormat.empty || identifier.isNotEmpty) {
-      length += 1;
     }
 
     return length;
