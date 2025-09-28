@@ -30,7 +30,7 @@ enum TypeNameFormat {
 
 /// The NDEF message consisting of a list of records.
 final class NdefMessage {
-  /// Constructs an NDEF message from list of records.
+  /// Constructs an NDEF message from a list of records.
   const NdefMessage({required this.records});
 
   /// The list of records for the message.
@@ -87,15 +87,15 @@ final class NdefRecord {
     switch (typeNameFormat) {
       case TypeNameFormat.empty:
         if (type.isNotEmpty || identifier.isNotEmpty || payload.isNotEmpty) {
-          throw FormatException('unexpected data in EMPTY record.');
+          throw FormatException('Unexpected data in EMPTY record.');
         }
       case TypeNameFormat.unknown:
         if (type.isNotEmpty) {
-          throw FormatException('unexpected type field in UNKNOWN record.');
+          throw FormatException('Unexpected type field in UNKNOWN record.');
         }
       case TypeNameFormat.unchanged:
         throw FormatException(
-          'unexpected UNCHANGED record in first chunk or logical record.',
+          'Unexpected UNCHANGED record in first chunk or logical record.',
         );
       default:
         break;
@@ -110,7 +110,8 @@ final class NdefRecord {
 
   /// The length of this record in bytes.
   int get byteLength {
-    int length = 3; // header + type length + payload length
+    // header + type length + payload length
+    int length = 3;
 
     if (typeNameFormat == TypeNameFormat.empty) {
       return length;

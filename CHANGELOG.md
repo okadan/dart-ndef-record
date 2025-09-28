@@ -1,3 +1,7 @@
+## 1.3.3
+
+* Update doc.
+
 ## 1.3.2
 
 * Fix incorrect byteLength calculation.

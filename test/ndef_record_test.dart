@@ -9,15 +9,15 @@ void main() {
       records: [
         NdefRecord(
           typeNameFormat: TypeNameFormat.wellKnown,
-          type: Uint8List.fromList([0x01]),
-          identifier: Uint8List.fromList([0x02]),
-          payload: Uint8List.fromList([0x03]),
+          type: Uint8List.fromList([0x00]),
+          identifier: Uint8List.fromList([0x00]),
+          payload: Uint8List.fromList([0x00]),
         ),
         NdefRecord(
           typeNameFormat: TypeNameFormat.media,
-          type: Uint8List.fromList([0x01]),
-          identifier: Uint8List.fromList([0x02]),
-          payload: Uint8List.fromList([0x03]),
+          type: Uint8List.fromList([0x00]),
+          identifier: Uint8List.fromList([0x00]),
+          payload: Uint8List.fromList([0x00]),
         ),
       ],
     );
@@ -27,15 +27,15 @@ void main() {
         records: [
           NdefRecord(
             typeNameFormat: TypeNameFormat.wellKnown,
-            type: Uint8List.fromList([0x01]),
-            identifier: Uint8List.fromList([0x02]),
-            payload: Uint8List.fromList([0x03]),
+            type: Uint8List.fromList([0x00]),
+            identifier: Uint8List.fromList([0x00]),
+            payload: Uint8List.fromList([0x00]),
           ),
           NdefRecord(
             typeNameFormat: TypeNameFormat.media,
-            type: Uint8List.fromList([0x01]),
-            identifier: Uint8List.fromList([0x02]),
-            payload: Uint8List.fromList([0x03]),
+            type: Uint8List.fromList([0x00]),
+            identifier: Uint8List.fromList([0x00]),
+            payload: Uint8List.fromList([0x00]),
           ),
         ],
       );
@@ -50,15 +50,15 @@ void main() {
         records: [
           NdefRecord(
             typeNameFormat: TypeNameFormat.wellKnown,
-            type: Uint8List.fromList([0x09]),
-            identifier: Uint8List.fromList([0x09]),
-            payload: Uint8List.fromList([0x09]),
+            type: Uint8List.fromList([0x01]),
+            identifier: Uint8List.fromList([0x01]),
+            payload: Uint8List.fromList([0x01]),
           ),
           NdefRecord(
             typeNameFormat: TypeNameFormat.media,
-            type: Uint8List.fromList([0x09]),
-            identifier: Uint8List.fromList([0x09]),
-            payload: Uint8List.fromList([0x09]),
+            type: Uint8List.fromList([0x01]),
+            identifier: Uint8List.fromList([0x01]),
+            payload: Uint8List.fromList([0x01]),
           ),
         ],
       ),
@@ -68,15 +68,15 @@ void main() {
         records: [
           NdefRecord(
             typeNameFormat: TypeNameFormat.wellKnown,
-            type: Uint8List.fromList([0x01]),
-            identifier: Uint8List.fromList([0x02]),
-            payload: Uint8List.fromList([0x03]),
+            type: Uint8List.fromList([0x00]),
+            identifier: Uint8List.fromList([0x00]),
+            payload: Uint8List.fromList([0x00]),
           ),
           NdefRecord(
             typeNameFormat: TypeNameFormat.external,
-            type: Uint8List.fromList([0x09]),
-            identifier: Uint8List.fromList([0x09]),
-            payload: Uint8List.fromList([0x09]),
+            type: Uint8List.fromList([0x01]),
+            identifier: Uint8List.fromList([0x01]),
+            payload: Uint8List.fromList([0x01]),
           ),
         ],
       ),
@@ -86,9 +86,9 @@ void main() {
         records: [
           NdefRecord(
             typeNameFormat: TypeNameFormat.wellKnown,
-            type: Uint8List.fromList([0x01]),
-            identifier: Uint8List.fromList([0x02]),
-            payload: Uint8List.fromList([0x03]),
+            type: Uint8List.fromList([0x00]),
+            identifier: Uint8List.fromList([0x00]),
+            payload: Uint8List.fromList([0x00]),
           ),
         ],
       ),
@@ -118,15 +118,15 @@ void main() {
           ),
           NdefRecord(
             typeNameFormat: TypeNameFormat.wellKnown,
-            type: Uint8List.fromList([0x01]),
-            identifier: Uint8List.fromList([0x01]),
-            payload: Uint8List.fromList([0x01]),
+            type: Uint8List.fromList([0x00]),
+            identifier: Uint8List.fromList([0x00]),
+            payload: Uint8List.fromList([0x00]),
           ),
           NdefRecord(
             typeNameFormat: TypeNameFormat.wellKnown,
-            type: Uint8List.fromList([0x01]),
-            identifier: Uint8List.fromList([0x01]),
-            payload: Uint8List.fromList(List.filled(256, 0x01)),
+            type: Uint8List.fromList([0x00]),
+            identifier: Uint8List.fromList([0x00]),
+            payload: Uint8List.fromList(List.filled(256, 0x00)),
           ),
         ],
       ),
@@ -140,17 +140,17 @@ void main() {
   group('NdefRecord#equality', () {
     final target = NdefRecord(
       typeNameFormat: TypeNameFormat.wellKnown,
-      type: Uint8List.fromList([0x01]),
-      identifier: Uint8List.fromList([0x02]),
-      payload: Uint8List.fromList([0x03]),
+      type: Uint8List.fromList([0x00]),
+      identifier: Uint8List.fromList([0x00]),
+      payload: Uint8List.fromList([0x00]),
     );
 
     test('equal', () {
       final record = NdefRecord(
         typeNameFormat: TypeNameFormat.wellKnown,
-        type: Uint8List.fromList([0x01]),
-        identifier: Uint8List.fromList([0x02]),
-        payload: Uint8List.fromList([0x03]),
+        type: Uint8List.fromList([0x00]),
+        identifier: Uint8List.fromList([0x00]),
+        payload: Uint8List.fromList([0x00]),
       );
       expect(record, equals(target));
       expect(record.hashCode, equals(target.hashCode));
@@ -161,33 +161,33 @@ void main() {
       name: 'different typeNameFormat',
       record: NdefRecord(
         typeNameFormat: TypeNameFormat.media,
-        type: Uint8List.fromList([0x01]),
-        identifier: Uint8List.fromList([0x02]),
-        payload: Uint8List.fromList([0x03]),
+        type: Uint8List.fromList([0x00]),
+        identifier: Uint8List.fromList([0x00]),
+        payload: Uint8List.fromList([0x00]),
       ),
     ), (
       name: 'different type',
       record: NdefRecord(
         typeNameFormat: TypeNameFormat.wellKnown,
-        type: Uint8List.fromList([0x09]),
-        identifier: Uint8List.fromList([0x02]),
-        payload: Uint8List.fromList([0x03]),
+        type: Uint8List.fromList([0x01]),
+        identifier: Uint8List.fromList([0x00]),
+        payload: Uint8List.fromList([0x00]),
       ),
     ), (
       name: 'different identifier',
       record: NdefRecord(
         typeNameFormat: TypeNameFormat.wellKnown,
-        type: Uint8List.fromList([0x01]),
-        identifier: Uint8List.fromList([0x09]),
-        payload: Uint8List.fromList([0x03]),
+        type: Uint8List.fromList([0x00]),
+        identifier: Uint8List.fromList([0x01]),
+        payload: Uint8List.fromList([0x00]),
       ),
     ), (
       name: 'different payload',
       record: NdefRecord(
         typeNameFormat: TypeNameFormat.wellKnown,
-        type: Uint8List.fromList([0x01]),
-        identifier: Uint8List.fromList([0x02]),
-        payload: Uint8List.fromList([0x09]),
+        type: Uint8List.fromList([0x00]),
+        identifier: Uint8List.fromList([0x00]),
+        payload: Uint8List.fromList([0x01]),
       ),
     ),
     ]) {
@@ -213,18 +213,18 @@ void main() {
       expected: 7,
       record: NdefRecord(
         typeNameFormat: TypeNameFormat.wellKnown,
-        type: Uint8List.fromList([0x01]),
-        identifier: Uint8List.fromList([0x01]),
-        payload: Uint8List.fromList([0x01]),
+        type: Uint8List.fromList([0x00]),
+        identifier: Uint8List.fromList([0x00]),
+        payload: Uint8List.fromList([0x00]),
       ),
     ), (
       name: 'long record',
       expected: 265,
       record: NdefRecord(
         typeNameFormat: TypeNameFormat.wellKnown,
-        type: Uint8List.fromList([0x01]),
-        identifier: Uint8List.fromList([0x01]),
-        payload: Uint8List.fromList(List.filled(256, 0x01)),
+        type: Uint8List.fromList([0x00]),
+        identifier: Uint8List.fromList([0x00]),
+        payload: Uint8List.fromList(List.filled(256, 0x00)),
       ),
     )]) {
       test(c.name, () {
