@@ -1,10 +1,14 @@
+### 1.4.2
+
+* Bump dependencies.
+
 ## 1.4.1
 
-* Bump versions.
+* Bump dependencies.
 
 ## 1.4.0
 
-* Bump versions.
+* Bump dependencies.
 
 ## 1.3.3
 
@@ -20,7 +24,7 @@
 
 ## 1.3.0
 
-* Bump versions.
+* Bump dependencies.
 
 ## 1.2.1
 
@@ -28,7 +32,7 @@
 
 ## 1.2.0
 
-* Bump versions.
+* Bump dependencies.
 * Update README and example.
 
 ## 1.1.1
@@ -37,7 +41,7 @@
 
 ## 1.1.0
 
-* Bump versions.
+* Bump dependencies.
 * Update README and example.
 
 ## 1.0.2
