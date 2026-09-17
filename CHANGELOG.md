@@ -1,4 +1,11 @@
-### 1.4.2
+## 1.5.0
+
+* Add `NdefMessage.encode` and `NdefMessage.decode`, supporting chunked records.
+* Fix incorrect doc for `TypeNameFormat.absoluteUri`.
+* Clarify that `byteLength` is the length without chunking.
+* Bump dependeicies.
+
+## 1.4.2
 
 * Bump dependencies.
 
