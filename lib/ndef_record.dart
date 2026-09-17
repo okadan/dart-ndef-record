@@ -163,10 +163,7 @@ final class NdefMessage {
       final typeLength = readByte();
       final payloadLength = shortRecord
           ? readByte()
-          : (readByte() << 24) |
-              (readByte() << 16) |
-              (readByte() << 8) |
-              readByte();
+          : (readByte() << 24) | (readByte() << 16) | (readByte() << 8) | readByte();
       final idLength = hasId ? readByte() : 0;
 
       final type = readBytes(typeLength);
@@ -176,9 +173,7 @@ final class NdefMessage {
       final inChunk = chunkPayload != null;
 
       if (!inChunk && tnf == TypeNameFormat.unchanged.index) {
-        throw FormatException(
-          'Unexpected UNCHANGED record outside of a chunk sequence.',
-        );
+        throw FormatException('Unexpected UNCHANGED record outside of a chunk sequence.');
       }
 
       if (inChunk) {
@@ -204,9 +199,7 @@ final class NdefMessage {
         }
       } else if (chunkFlag) {
         if (typeLength == 0 && tnf != TypeNameFormat.unknown.index) {
-          throw FormatException(
-            'The first chunk of a chunked record must have a type field.',
-          );
+          throw FormatException('The first chunk of a chunked record must have a type field.');
         }
         chunkTnf = TypeNameFormat.values[tnf];
         chunkType = type;
@@ -244,8 +237,7 @@ final class NdefMessage {
   @override
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
-    return other is NdefMessage &&
-        _iterableEquality.equals(other.records, records);
+    return other is NdefMessage && _iterableEquality.equals(other.records, records);
   }
 }
 
@@ -289,9 +281,7 @@ final class NdefRecord {
           throw FormatException('Unexpected type field in UNKNOWN record.');
         }
       case TypeNameFormat.unchanged:
-        throw FormatException(
-          'Unexpected UNCHANGED record in first chunk or logical record.',
-        );
+        throw FormatException('Unexpected UNCHANGED record in first chunk or logical record.');
       default:
         break;
     }
@@ -341,8 +331,7 @@ final class NdefRecord {
     if (identifier.length > 255) {
       throw FormatException('Record identifier must not exceed 255 bytes.');
     }
-    if (maxChunkPayloadLength == null ||
-        payload.length <= maxChunkPayloadLength) {
+    if (maxChunkPayloadLength == null || payload.length <= maxChunkPayloadLength) {
       return [payload];
     }
     if (type.isEmpty && typeNameFormat != TypeNameFormat.unknown) {

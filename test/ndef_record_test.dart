@@ -44,55 +44,59 @@ void main() {
       expect(message, isNot(same(target)));
     });
 
-    for (final c in <({String name, NdefMessage message})>[(
-      name: 'different record',
-      message: NdefMessage(
-        records: [
-          NdefRecord(
-            typeNameFormat: TypeNameFormat.wellKnown,
-            type: Uint8List.fromList([0x01]),
-            identifier: Uint8List.fromList([0x01]),
-            payload: Uint8List.fromList([0x01]),
-          ),
-          NdefRecord(
-            typeNameFormat: TypeNameFormat.media,
-            type: Uint8List.fromList([0x01]),
-            identifier: Uint8List.fromList([0x01]),
-            payload: Uint8List.fromList([0x01]),
-          ),
-        ],
+    for (final c in <({String name, NdefMessage message})>[
+      (
+        name: 'different record',
+        message: NdefMessage(
+          records: [
+            NdefRecord(
+              typeNameFormat: TypeNameFormat.wellKnown,
+              type: Uint8List.fromList([0x01]),
+              identifier: Uint8List.fromList([0x01]),
+              payload: Uint8List.fromList([0x01]),
+            ),
+            NdefRecord(
+              typeNameFormat: TypeNameFormat.media,
+              type: Uint8List.fromList([0x01]),
+              identifier: Uint8List.fromList([0x01]),
+              payload: Uint8List.fromList([0x01]),
+            ),
+          ],
+        ),
       ),
-    ), (
-      name: 'different second record',
-      message: NdefMessage(
-        records: [
-          NdefRecord(
-            typeNameFormat: TypeNameFormat.wellKnown,
-            type: Uint8List.fromList([0x00]),
-            identifier: Uint8List.fromList([0x00]),
-            payload: Uint8List.fromList([0x00]),
-          ),
-          NdefRecord(
-            typeNameFormat: TypeNameFormat.external,
-            type: Uint8List.fromList([0x01]),
-            identifier: Uint8List.fromList([0x01]),
-            payload: Uint8List.fromList([0x01]),
-          ),
-        ],
+      (
+        name: 'different second record',
+        message: NdefMessage(
+          records: [
+            NdefRecord(
+              typeNameFormat: TypeNameFormat.wellKnown,
+              type: Uint8List.fromList([0x00]),
+              identifier: Uint8List.fromList([0x00]),
+              payload: Uint8List.fromList([0x00]),
+            ),
+            NdefRecord(
+              typeNameFormat: TypeNameFormat.external,
+              type: Uint8List.fromList([0x01]),
+              identifier: Uint8List.fromList([0x01]),
+              payload: Uint8List.fromList([0x01]),
+            ),
+          ],
+        ),
       ),
-    ), (
-      name: 'different number of records',
-      message: NdefMessage(
-        records: [
-          NdefRecord(
-            typeNameFormat: TypeNameFormat.wellKnown,
-            type: Uint8List.fromList([0x00]),
-            identifier: Uint8List.fromList([0x00]),
-            payload: Uint8List.fromList([0x00]),
-          ),
-        ],
+      (
+        name: 'different number of records',
+        message: NdefMessage(
+          records: [
+            NdefRecord(
+              typeNameFormat: TypeNameFormat.wellKnown,
+              type: Uint8List.fromList([0x00]),
+              identifier: Uint8List.fromList([0x00]),
+              payload: Uint8List.fromList([0x00]),
+            ),
+          ],
+        ),
       ),
-    )]) {
+    ]) {
       test(c.name, () {
         expect(c.message, isNot(equals(target)));
         expect(c.message, isNot(same(target)));
@@ -101,36 +105,35 @@ void main() {
   });
 
   group('NdefMessage#byteLength', () {
-    for (final c in <({String name, int expected, NdefMessage message})>[(
-      name: 'empty records',
-      expected: 0,
-      message: NdefMessage(records: []),
-    ), (
-      name: 'total byteLength of records',
-      expected: 275,
-      message: NdefMessage(
-        records: [
-          NdefRecord(
-            typeNameFormat: TypeNameFormat.empty,
-            type: Uint8List(0),
-            identifier: Uint8List(0),
-            payload: Uint8List(0),
-          ),
-          NdefRecord(
-            typeNameFormat: TypeNameFormat.wellKnown,
-            type: Uint8List.fromList([0x00]),
-            identifier: Uint8List.fromList([0x00]),
-            payload: Uint8List.fromList([0x00]),
-          ),
-          NdefRecord(
-            typeNameFormat: TypeNameFormat.wellKnown,
-            type: Uint8List.fromList([0x00]),
-            identifier: Uint8List.fromList([0x00]),
-            payload: Uint8List.fromList(List.filled(256, 0x00)),
-          ),
-        ],
+    for (final c in <({String name, int expected, NdefMessage message})>[
+      (name: 'empty records', expected: 0, message: NdefMessage(records: [])),
+      (
+        name: 'total byteLength of records',
+        expected: 275,
+        message: NdefMessage(
+          records: [
+            NdefRecord(
+              typeNameFormat: TypeNameFormat.empty,
+              type: Uint8List(0),
+              identifier: Uint8List(0),
+              payload: Uint8List(0),
+            ),
+            NdefRecord(
+              typeNameFormat: TypeNameFormat.wellKnown,
+              type: Uint8List.fromList([0x00]),
+              identifier: Uint8List.fromList([0x00]),
+              payload: Uint8List.fromList([0x00]),
+            ),
+            NdefRecord(
+              typeNameFormat: TypeNameFormat.wellKnown,
+              type: Uint8List.fromList([0x00]),
+              identifier: Uint8List.fromList([0x00]),
+              payload: Uint8List.fromList(List.filled(256, 0x00)),
+            ),
+          ],
+        ),
       ),
-    )]) {
+    ]) {
       test(c.name, () {
         expect(c.message.byteLength, equals(c.expected));
       });
@@ -157,39 +160,43 @@ void main() {
       expect(record, isNot(same(target)));
     });
 
-    for (final p in <({String name, NdefRecord record})>[(
-      name: 'different typeNameFormat',
-      record: NdefRecord(
-        typeNameFormat: TypeNameFormat.media,
-        type: Uint8List.fromList([0x00]),
-        identifier: Uint8List.fromList([0x00]),
-        payload: Uint8List.fromList([0x00]),
+    for (final p in <({String name, NdefRecord record})>[
+      (
+        name: 'different typeNameFormat',
+        record: NdefRecord(
+          typeNameFormat: TypeNameFormat.media,
+          type: Uint8List.fromList([0x00]),
+          identifier: Uint8List.fromList([0x00]),
+          payload: Uint8List.fromList([0x00]),
+        ),
       ),
-    ), (
-      name: 'different type',
-      record: NdefRecord(
-        typeNameFormat: TypeNameFormat.wellKnown,
-        type: Uint8List.fromList([0x01]),
-        identifier: Uint8List.fromList([0x00]),
-        payload: Uint8List.fromList([0x00]),
+      (
+        name: 'different type',
+        record: NdefRecord(
+          typeNameFormat: TypeNameFormat.wellKnown,
+          type: Uint8List.fromList([0x01]),
+          identifier: Uint8List.fromList([0x00]),
+          payload: Uint8List.fromList([0x00]),
+        ),
       ),
-    ), (
-      name: 'different identifier',
-      record: NdefRecord(
-        typeNameFormat: TypeNameFormat.wellKnown,
-        type: Uint8List.fromList([0x00]),
-        identifier: Uint8List.fromList([0x01]),
-        payload: Uint8List.fromList([0x00]),
+      (
+        name: 'different identifier',
+        record: NdefRecord(
+          typeNameFormat: TypeNameFormat.wellKnown,
+          type: Uint8List.fromList([0x00]),
+          identifier: Uint8List.fromList([0x01]),
+          payload: Uint8List.fromList([0x00]),
+        ),
       ),
-    ), (
-      name: 'different payload',
-      record: NdefRecord(
-        typeNameFormat: TypeNameFormat.wellKnown,
-        type: Uint8List.fromList([0x00]),
-        identifier: Uint8List.fromList([0x00]),
-        payload: Uint8List.fromList([0x01]),
+      (
+        name: 'different payload',
+        record: NdefRecord(
+          typeNameFormat: TypeNameFormat.wellKnown,
+          type: Uint8List.fromList([0x00]),
+          identifier: Uint8List.fromList([0x00]),
+          payload: Uint8List.fromList([0x01]),
+        ),
       ),
-    ),
     ]) {
       test(p.name, () {
         expect(p.record, isNot(equals(target)));
@@ -199,34 +206,38 @@ void main() {
   });
 
   group('NdefRecord#byteLength', () {
-    for (final c in <({String name, int expected, NdefRecord record})>[(
-      name: 'empty record',
-      expected: 3,
-      record: NdefRecord(
-        typeNameFormat: TypeNameFormat.empty,
-        type: Uint8List(0),
-        identifier: Uint8List(0),
-        payload: Uint8List(0),
+    for (final c in <({String name, int expected, NdefRecord record})>[
+      (
+        name: 'empty record',
+        expected: 3,
+        record: NdefRecord(
+          typeNameFormat: TypeNameFormat.empty,
+          type: Uint8List(0),
+          identifier: Uint8List(0),
+          payload: Uint8List(0),
+        ),
       ),
-    ), (
-      name: 'short record',
-      expected: 7,
-      record: NdefRecord(
-        typeNameFormat: TypeNameFormat.wellKnown,
-        type: Uint8List.fromList([0x00]),
-        identifier: Uint8List.fromList([0x00]),
-        payload: Uint8List.fromList([0x00]),
+      (
+        name: 'short record',
+        expected: 7,
+        record: NdefRecord(
+          typeNameFormat: TypeNameFormat.wellKnown,
+          type: Uint8List.fromList([0x00]),
+          identifier: Uint8List.fromList([0x00]),
+          payload: Uint8List.fromList([0x00]),
+        ),
       ),
-    ), (
-      name: 'long record',
-      expected: 265,
-      record: NdefRecord(
-        typeNameFormat: TypeNameFormat.wellKnown,
-        type: Uint8List.fromList([0x00]),
-        identifier: Uint8List.fromList([0x00]),
-        payload: Uint8List.fromList(List.filled(256, 0x00)),
+      (
+        name: 'long record',
+        expected: 265,
+        record: NdefRecord(
+          typeNameFormat: TypeNameFormat.wellKnown,
+          type: Uint8List.fromList([0x00]),
+          identifier: Uint8List.fromList([0x00]),
+          payload: Uint8List.fromList(List.filled(256, 0x00)),
+        ),
       ),
-    )]) {
+    ]) {
       test(c.name, () {
         expect(c.record.byteLength, equals(c.expected));
       });
@@ -249,10 +260,7 @@ void main() {
           ),
         ],
       );
-      expect(
-        () => message.encode(maxChunkPayloadLength: 0),
-        throwsArgumentError,
-      );
+      expect(() => message.encode(maxChunkPayloadLength: 0), throwsArgumentError);
     });
 
     test('throws when a record type exceeds 255 bytes', () {
@@ -283,52 +291,56 @@ void main() {
       expect(message.encode, throwsFormatException);
     });
 
-    for (final c in <({String name, List<int> expected, NdefMessage message})>[(
-      name: 'single empty record',
-      expected: [0xD0, 0x00, 0x00],
-      message: NdefMessage(
-        records: [
-          NdefRecord(
-            typeNameFormat: TypeNameFormat.empty,
-            type: Uint8List(0),
-            identifier: Uint8List(0),
-            payload: Uint8List(0),
-          ),
-        ],
+    for (final c in <({String name, List<int> expected, NdefMessage message})>[
+      (
+        name: 'single empty record',
+        expected: [0xD0, 0x00, 0x00],
+        message: NdefMessage(
+          records: [
+            NdefRecord(
+              typeNameFormat: TypeNameFormat.empty,
+              type: Uint8List(0),
+              identifier: Uint8List(0),
+              payload: Uint8List(0),
+            ),
+          ],
+        ),
       ),
-    ), (
-      name: 'single short record with id',
-      expected: [0xD9, 0x01, 0x01, 0x01, 0x54, 0x02, 0x03],
-      message: NdefMessage(
-        records: [
-          NdefRecord(
-            typeNameFormat: TypeNameFormat.wellKnown,
-            type: Uint8List.fromList([0x54]),
-            identifier: Uint8List.fromList([0x02]),
-            payload: Uint8List.fromList([0x03]),
-          ),
-        ],
+      (
+        name: 'single short record with id',
+        expected: [0xD9, 0x01, 0x01, 0x01, 0x54, 0x02, 0x03],
+        message: NdefMessage(
+          records: [
+            NdefRecord(
+              typeNameFormat: TypeNameFormat.wellKnown,
+              type: Uint8List.fromList([0x54]),
+              identifier: Uint8List.fromList([0x02]),
+              payload: Uint8List.fromList([0x03]),
+            ),
+          ],
+        ),
       ),
-    ), (
-      name: 'MB set only on first record, ME set only on last record',
-      expected: [0x90, 0x00, 0x00, 0x50, 0x00, 0x00],
-      message: NdefMessage(
-        records: [
-          NdefRecord(
-            typeNameFormat: TypeNameFormat.empty,
-            type: Uint8List(0),
-            identifier: Uint8List(0),
-            payload: Uint8List(0),
-          ),
-          NdefRecord(
-            typeNameFormat: TypeNameFormat.empty,
-            type: Uint8List(0),
-            identifier: Uint8List(0),
-            payload: Uint8List(0),
-          ),
-        ],
+      (
+        name: 'MB set only on first record, ME set only on last record',
+        expected: [0x90, 0x00, 0x00, 0x50, 0x00, 0x00],
+        message: NdefMessage(
+          records: [
+            NdefRecord(
+              typeNameFormat: TypeNameFormat.empty,
+              type: Uint8List(0),
+              identifier: Uint8List(0),
+              payload: Uint8List(0),
+            ),
+            NdefRecord(
+              typeNameFormat: TypeNameFormat.empty,
+              type: Uint8List(0),
+              identifier: Uint8List(0),
+              payload: Uint8List(0),
+            ),
+          ],
+        ),
       ),
-    )]) {
+    ]) {
       test(c.name, () {
         expect(c.message.encode(), equals(Uint8List.fromList(c.expected)));
       });
@@ -337,10 +349,7 @@ void main() {
 
   group('NdefMessage#decode', () {
     test('throws on empty bytes', () {
-      expect(
-        () => NdefMessage.decode(Uint8List(0)),
-        throwsFormatException,
-      );
+      expect(() => NdefMessage.decode(Uint8List(0)), throwsFormatException);
     });
 
     test('throws when MB is missing on the first record', () {
@@ -353,9 +362,7 @@ void main() {
 
     test('throws on trailing data after the ME record', () {
       expect(
-        () => NdefMessage.decode(
-          Uint8List.fromList([0xD0, 0x00, 0x00, 0x00]),
-        ),
+        () => NdefMessage.decode(Uint8List.fromList([0xD0, 0x00, 0x00, 0x00])),
         throwsFormatException,
       );
     });
@@ -383,100 +390,104 @@ void main() {
       );
     });
 
-    for (final c in <({String name, NdefMessage expected, List<int> bytes})>[(
-      name: 'single empty record',
-      bytes: [0xD0, 0x00, 0x00],
-      expected: NdefMessage(
-        records: [
-          NdefRecord(
-            typeNameFormat: TypeNameFormat.empty,
-            type: Uint8List(0),
-            identifier: Uint8List(0),
-            payload: Uint8List(0),
-          ),
-        ],
+    for (final c in <({String name, NdefMessage expected, List<int> bytes})>[
+      (
+        name: 'single empty record',
+        bytes: [0xD0, 0x00, 0x00],
+        expected: NdefMessage(
+          records: [
+            NdefRecord(
+              typeNameFormat: TypeNameFormat.empty,
+              type: Uint8List(0),
+              identifier: Uint8List(0),
+              payload: Uint8List(0),
+            ),
+          ],
+        ),
       ),
-    ), (
-      name: 'single short record with id',
-      bytes: [0xD9, 0x01, 0x01, 0x01, 0x54, 0x02, 0x03],
-      expected: NdefMessage(
-        records: [
-          NdefRecord(
-            typeNameFormat: TypeNameFormat.wellKnown,
-            type: Uint8List.fromList([0x54]),
-            identifier: Uint8List.fromList([0x02]),
-            payload: Uint8List.fromList([0x03]),
-          ),
-        ],
+      (
+        name: 'single short record with id',
+        bytes: [0xD9, 0x01, 0x01, 0x01, 0x54, 0x02, 0x03],
+        expected: NdefMessage(
+          records: [
+            NdefRecord(
+              typeNameFormat: TypeNameFormat.wellKnown,
+              type: Uint8List.fromList([0x54]),
+              identifier: Uint8List.fromList([0x02]),
+              payload: Uint8List.fromList([0x03]),
+            ),
+          ],
+        ),
       ),
-    )]) {
+    ]) {
       test(c.name, () {
-        expect(
-          NdefMessage.decode(Uint8List.fromList(c.bytes)),
-          equals(c.expected),
-        );
+        expect(NdefMessage.decode(Uint8List.fromList(c.bytes)), equals(c.expected));
       });
     }
   });
 
   group('NdefMessage#encode/decode round trip', () {
-    for (final c in <({String name, NdefMessage message})>[(
-      name: 'empty record',
-      message: NdefMessage(
-        records: [
-          NdefRecord(
-            typeNameFormat: TypeNameFormat.empty,
-            type: Uint8List(0),
-            identifier: Uint8List(0),
-            payload: Uint8List(0),
-          ),
-        ],
+    for (final c in <({String name, NdefMessage message})>[
+      (
+        name: 'empty record',
+        message: NdefMessage(
+          records: [
+            NdefRecord(
+              typeNameFormat: TypeNameFormat.empty,
+              type: Uint8List(0),
+              identifier: Uint8List(0),
+              payload: Uint8List(0),
+            ),
+          ],
+        ),
       ),
-    ), (
-      name: 'multiple records including a long record',
-      message: NdefMessage(
-        records: [
-          NdefRecord(
-            typeNameFormat: TypeNameFormat.wellKnown,
-            type: Uint8List.fromList([0x54]),
-            identifier: Uint8List.fromList([0x02]),
-            payload: Uint8List.fromList([0x03]),
-          ),
-          NdefRecord(
-            typeNameFormat: TypeNameFormat.media,
-            type: Uint8List.fromList('text/plain'.codeUnits),
-            identifier: Uint8List.fromList([0x01, 0x02]),
-            payload: Uint8List.fromList(List.filled(300, 0x41)),
-          ),
-          NdefRecord(
-            typeNameFormat: TypeNameFormat.external,
-            type: Uint8List.fromList('example.com:x'.codeUnits),
-            identifier: Uint8List(0),
-            payload: Uint8List.fromList([0x99]),
-          ),
-          NdefRecord(
-            typeNameFormat: TypeNameFormat.unknown,
-            type: Uint8List(0),
-            identifier: Uint8List(0),
-            payload: Uint8List(0),
-          ),
-        ],
+      (
+        name: 'multiple records including a long record',
+        message: NdefMessage(
+          records: [
+            NdefRecord(
+              typeNameFormat: TypeNameFormat.wellKnown,
+              type: Uint8List.fromList([0x54]),
+              identifier: Uint8List.fromList([0x02]),
+              payload: Uint8List.fromList([0x03]),
+            ),
+            NdefRecord(
+              typeNameFormat: TypeNameFormat.media,
+              type: Uint8List.fromList('text/plain'.codeUnits),
+              identifier: Uint8List.fromList([0x01, 0x02]),
+              payload: Uint8List.fromList(List.filled(300, 0x41)),
+            ),
+            NdefRecord(
+              typeNameFormat: TypeNameFormat.external,
+              type: Uint8List.fromList('example.com:x'.codeUnits),
+              identifier: Uint8List(0),
+              payload: Uint8List.fromList([0x99]),
+            ),
+            NdefRecord(
+              typeNameFormat: TypeNameFormat.unknown,
+              type: Uint8List(0),
+              identifier: Uint8List(0),
+              payload: Uint8List(0),
+            ),
+          ],
+        ),
       ),
-    ), (
-      // Only a chunked record's first chunk requires a type field, so an
-      // unchunked record without one stays readable.
-      name: 'record without a type field',
-      message: NdefMessage(
-        records: [
-          NdefRecord(
-            typeNameFormat: TypeNameFormat.wellKnown,
-            type: Uint8List(0),
-            identifier: Uint8List(0),
-            payload: Uint8List.fromList([0xAA]),
-          ),
-        ],
+      (
+        // Only a chunked record's first chunk requires a type field, so an
+        // unchunked record without one stays readable.
+        name: 'record without a type field',
+        message: NdefMessage(
+          records: [
+            NdefRecord(
+              typeNameFormat: TypeNameFormat.wellKnown,
+              type: Uint8List(0),
+              identifier: Uint8List(0),
+              payload: Uint8List.fromList([0xAA]),
+            ),
+          ],
+        ),
       ),
-    )]) {
+    ]) {
       test(c.name, () {
         final encoded = c.message.encode();
         expect(encoded.length, equals(c.message.byteLength));
@@ -502,10 +513,7 @@ void main() {
     test('uses a 1-byte length with SR set at 255 bytes', () {
       final message = messageWithPayloadLength(255);
       final encoded = message.encode();
-      expect(
-        encoded.sublist(0, 4),
-        equals(Uint8List.fromList([0xD1, 0x01, 0xFF, 0x54])),
-      );
+      expect(encoded.sublist(0, 4), equals(Uint8List.fromList([0xD1, 0x01, 0xFF, 0x54])));
       expect(encoded.length, equals(259));
       expect(message.byteLength, equals(259));
     });
@@ -526,10 +534,7 @@ void main() {
         0xC1, 0x01, 0x00, 0x00, 0x01, 0x00, 0x54, //
         ...List.filled(256, 0xAA),
       ]);
-      expect(
-        NdefMessage.decode(bytes),
-        equals(messageWithPayloadLength(256)),
-      );
+      expect(NdefMessage.decode(bytes), equals(messageWithPayloadLength(256)));
     });
   });
 
@@ -565,25 +570,19 @@ void main() {
   });
 
   group('NdefMessage#encode chunked', () {
-    test(
-      'does not chunk when every payload fits within maxChunkPayloadLength',
-      () {
-        final message = NdefMessage(
-          records: [
-            NdefRecord(
-              typeNameFormat: TypeNameFormat.unknown,
-              type: Uint8List(0),
-              identifier: Uint8List(0),
-              payload: Uint8List.fromList([0x01, 0x02]),
-            ),
-          ],
-        );
-        expect(
-          message.encode(maxChunkPayloadLength: 100),
-          equals(message.encode()),
-        );
-      },
-    );
+    test('does not chunk when every payload fits within maxChunkPayloadLength', () {
+      final message = NdefMessage(
+        records: [
+          NdefRecord(
+            typeNameFormat: TypeNameFormat.unknown,
+            type: Uint8List(0),
+            identifier: Uint8List(0),
+            payload: Uint8List.fromList([0x01, 0x02]),
+          ),
+        ],
+      );
+      expect(message.encode(maxChunkPayloadLength: 100), equals(message.encode()));
+    });
 
     test('throws when chunking a record without a type field', () {
       final message = NdefMessage(
@@ -596,10 +595,7 @@ void main() {
           ),
         ],
       );
-      expect(
-        () => message.encode(maxChunkPayloadLength: 1),
-        throwsFormatException,
-      );
+      expect(() => message.encode(maxChunkPayloadLength: 1), throwsFormatException);
     });
 
     test('chunks a record without a type field when its TNF is UNKNOWN', () {
@@ -614,15 +610,11 @@ void main() {
         ],
       );
       final encoded = message.encode(maxChunkPayloadLength: 1);
-      expect(
-        encoded,
-        equals(Uint8List.fromList([0xB5, 0x00, 0x01, 0xAA, 0x56, 0x00, 0x01, 0xBB])),
-      );
+      expect(encoded, equals(Uint8List.fromList([0xB5, 0x00, 0x01, 0xAA, 0x56, 0x00, 0x01, 0xBB])));
       expect(NdefMessage.decode(encoded), equals(message));
     });
 
-    for (final c
-        in <({String name, int maxChunkPayloadLength, NdefMessage message})>[
+    for (final c in <({String name, int maxChunkPayloadLength, NdefMessage message})>[
       (
         name: 'single record split into three chunks',
         maxChunkPayloadLength: 10,
@@ -673,9 +665,7 @@ void main() {
       ),
     ]) {
       test(c.name, () {
-        final encoded = c.message.encode(
-          maxChunkPayloadLength: c.maxChunkPayloadLength,
-        );
+        final encoded = c.message.encode(maxChunkPayloadLength: c.maxChunkPayloadLength);
         expect(
           encoded.length,
           greaterThan(c.message.encode().length),
@@ -740,9 +730,7 @@ void main() {
     test('throws when a chunk (CF = 1) also sets ME', () {
       // MB=1, ME=1, CF=1, SR=1, TNF=wellKnown(1).
       expect(
-        () => NdefMessage.decode(
-          Uint8List.fromList([0xF1, 0x00, 0x01, 0x00]),
-        ),
+        () => NdefMessage.decode(Uint8List.fromList([0xF1, 0x00, 0x01, 0x00])),
         throwsFormatException,
       );
     });
@@ -766,9 +754,7 @@ void main() {
     test('throws when a chunk sequence is left unterminated', () {
       // MB=1, CF=1, SR=1, TNF=wellKnown(1) with no following chunk.
       expect(
-        () => NdefMessage.decode(
-          Uint8List.fromList([0xB1, 0x01, 0x01, 0x54, 0x00]),
-        ),
+        () => NdefMessage.decode(Uint8List.fromList([0xB1, 0x01, 0x01, 0x54, 0x00])),
         throwsFormatException,
       );
     });
@@ -776,9 +762,7 @@ void main() {
     test('throws for a standalone UNCHANGED record', () {
       // MB=1, ME=1, SR=1, TNF=UNCHANGED(6), with CF=0 (not part of a chunk).
       expect(
-        () => NdefMessage.decode(
-          Uint8List.fromList([0xD6, 0x00, 0x00]),
-        ),
+        () => NdefMessage.decode(Uint8List.fromList([0xD6, 0x00, 0x00])),
         throwsFormatException,
       );
     });
